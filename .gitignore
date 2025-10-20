@@ -1,0 +1,2 @@
+# 忽略任何层级的 node_modules
+node_modules/
