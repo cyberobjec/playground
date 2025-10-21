@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///Users/cyber/dev/playground_old/mdblog/src/app/page.tsx"],"sourcesContent":["import React from \"react\";\nimport Login from \"./components/Login\";\n\nconst page = () => {\n  return (\n    <main id=\"hero\">\n      <div className=\"hero-img\">\n        <img src=\"/hero-img.jpeg\" alt=\"hero-img\" />\n      </div>\n    </main>\n  );\n};\n\nexport default page;\n"],"names":[],"mappings":";;;;;;AAGA,MAAM,OAAO;IACX,qBACE,8OAAC;QAAK,IAAG;kBACP,cAAA,8OAAC;YAAI,WAAU;sBACb,cAAA,8OAAC;gBAAI,KAAI;gBAAiB,KAAI;;;;;;;;;;;;;;;;AAItC;uCAEe","debugId":null}}]
+}
