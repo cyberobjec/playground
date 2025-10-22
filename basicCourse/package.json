@@ -1,0 +1,14 @@
+{
+  "name": "basiccourse",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "scripts": {
+    "dev": "bun build script.ts --outdir . --watch",
+    "build": "bun build script.ts --outdir . --minify"
+  }
+}
