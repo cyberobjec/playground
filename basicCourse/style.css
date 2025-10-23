@@ -1,11 +1,13 @@
 /* ==================== CSS 变量 ==================== */
-@import "./color-1.css";
+
 :root {
   --bg-black-900: #f2f2fc;
   --bg-black-100: #fdf9ff;
   --bg-black-50: #e8dfec;
   --text-black-900: #302e4d;
   --text-black-700: #504e70;
+  --skin-color: #ec1839; /* 👈 添加这个变量 */
+  --bg-black-900: #f2f2fc;
 }
 
 /* ==================== 全局重置 ==================== */
@@ -13,21 +15,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
 }
 
-::before,
-::after {
-  box-sizing: border-box;
-}
-
-/* ==================== 基础样式 ==================== */
 body {
-  margin: 0;
-  padding: 0;
   line-height: 1.5;
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg-black-900);
+}
+
+li {
+  list-style: none;
 }
 
 a {
@@ -35,256 +37,86 @@ a {
   color: var(--text-black-900);
 }
 
-ul {
-  list-style: none;
-}
-
-/* ==================== 主容器 Grid 布局 ==================== */
 .main-container {
+  margin: 0 auto;
+  max-width: 1200px;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 270px 1fr; /* 侧边栏270px，主内容自适应 */
-  min-height: 100vh;
+  grid-template-columns: 260px 1fr;
 }
 
-/* ==================== 侧边栏 ==================== */
 .asider {
-  background-color: var(--bg-black-100);
-  padding: 30px 0;
+  width: 260px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid var(--bg-black-50);
-  position: sticky; /* 滚动时固定在顶部 */
-  top: 0;
-  height: 100vh; /* 占满视口高度 */
-  overflow-y: auto; /* 内容过多时可滚动 */
-}
-
-/* ==================== Logo ==================== */
-.asider .logo {
-  padding: 0 30px;
-  margin-bottom: 50px;
-}
-
-.asider .logo a {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 15px 20px;
-  font-size: 30px;
-  font-weight: 700;
-  position: relative;
+  padding: 64px 0;
 
-  &::before {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-bottom: 5px solid var(--skin-color);
-    border-left: 5px solid var(--skin-color);
-    bottom: 0;
-    left: 0;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-top: 5px solid var(--skin-color);
-    border-right: 5px solid var(--skin-color);
-    top: 0;
-    right: 0;
-  }
-}
-
-/* ==================== 导航菜单 ==================== */
-.asider .nav {
-}
-
-.asider .nav li {
-  width: 100%;
-}
-.asider .nav a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 15px 30px;
-  width: 100%;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text-black-700);
-  transition: all 0.3s ease;
-}
-
-.asider .nav a:hover {
-  background-color: var(--bg-black-50);
-  color: var(--text-black-900);
-}
-
-/* 图标样式 */
-.asider .nav a i svg {
-  width: 20px;
-  height: 20px;
-  stroke-width: 2;
-}
-
-/* 激活状态 */
-.asider .nav a.active {
-  background-color: var(--bg-black-50);
-  color: var(--text-black-900);
-  position: relative;
-}
-
-.asider .nav a.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 30px;
-  right: 30px;
-  height: 8px;
-  background: linear-gradient(
-    to right,
-    rgba(255, 235, 59, 0.6),
-    rgba(255, 235, 59, 0.7),
-    rgba(255, 235, 59, 0.6)
-  );
-  border-radius: 2px;
-  transform: scaleX(0.98);
-}
-
-/* ==================== 主内容区 ==================== */
-.main-content {
-  min-height: 100vh;
-  overflow-x: hidden; /* 防止横向溢出 */
-}
-
-.section {
-  background: var(--bg-black-900);
-  min-height: 100vh;
-  padding: 40px;
-}
-
-/* ==================== 容器 ==================== */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -15px;
-}
-
-.home-info {
-  padding: 0 15px;
-}
-
-.home-info .hello {
-  font-size: 28px;
-  margin-bottom: 15px;
-  color: var(--text-black-900);
-}
-
-.home-info .hello .name {
-  color: var(--skin-color);
-  font-weight: 700;
-}
-
-.home-info .my-profession {
-  font-size: 30px;
-  margin-bottom: 20px;
-  color: var(--text-black-900);
-}
-
-.home-info .my-profession .typing {
-  color: var(--skin-color);
-}
-
-.home-info p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: var(--text-black-700);
-  margin-bottom: 20px;
-}
-
-/* ==================== 响应式设计 ==================== */
-@media (max-width: 1024px) {
-  .main-container {
-    grid-template-columns: 250px 1fr; /* 稍微缩小侧边栏 */
-  }
-
-  .asider {
-    width: 250px;
-  }
-}
-
-@media (max-width: 768px) {
-  .main-container {
-    grid-template-columns: 1fr; /* 单列布局 */
-    grid-template-rows: auto 1fr; /* 侧边栏在上，内容在下 */
-  }
-
-  .asider {
-    height: auto;
+  .logo a {
+    font-size: 36px;
+    font-weight: bold;
+    padding: 20px 40px;
+    display: inline-block;
     position: relative;
-    padding: 20px 0;
-    border-right: none;
-    border-bottom: 1px solid var(--bg-black-50);
-    overflow-y: visible;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-top: 5px solid var(--skin-color);
+      border-right: 5px solid var(--skin-color);
+      top: 0;
+      right: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-bottom: 5px solid var(--skin-color);
+      border-left: 5px solid var(--skin-color);
+      bottom: 0;
+      left: 0;
+    }
   }
 
-  .asider .logo {
-    padding: 0 20px;
-    margin-bottom: 20px;
-  }
+  .nav {
+    margin-top: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
-  .asider .nav {
-    flex-direction: row;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding: 0 20px;
-  }
-
-  .asider .nav li {
-    width: auto;
-    flex-shrink: 0;
-  }
-
-  .asider .nav a {
-    padding: 10px 20px;
-    white-space: nowrap;
-  }
-
-  .section {
-    padding: 20px;
-  }
-
-  .home-info .hello {
-    font-size: 22px;
-  }
-
-  .home-info .my-profession {
-    font-size: 24px;
+    li a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: large;
+      font-weight: bold;
+    }
   }
 }
 
-@media (max-width: 480px) {
-  .asider .logo a {
-    font-size: 24px;
-  }
+.main-content {
+  padding: 64px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.home-img img {
+  width: 240px;
+}
 
-  .home-info .hello {
-    font-size: 20px;
-  }
+.nav li a {
+  position: relative;
+  transition: all 0.3s;
+}
 
-  .home-info .my-profession {
-    font-size: 22px;
-  }
-
-  .home-info p {
-    font-size: 14px;
-  }
+.nav li a.active {
+  background: linear-gradient(to right, #ffeb3b 0%, #ffeb3b 100%);
+  background-size: 100% 8px;
+  background-position: 0 88%;
+  background-repeat: no-repeat;
 }
