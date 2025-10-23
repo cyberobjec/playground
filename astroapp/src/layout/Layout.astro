@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  lang?: "zh-CN" | "en"; // 合并到一个接口
+}
+
+const {
+  title,
+  description = "光合的个人播客",
+  image = "/images/band.jpg",
+  lang = "zh-CN",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta property="og:image" content={image} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
