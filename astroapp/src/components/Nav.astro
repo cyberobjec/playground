@@ -1,0 +1,33 @@
+---
+const navItems = [
+  { href: "/posts", label: "文章" },
+  { href: "/tags", label: "标签" },
+  { href: "/about", label: "关于" },
+  { href: "/category", label: "分类" },
+];
+import Footer from "./Footer.astro";
+import Toggle from "./Toggle.astro";
+---
+
+<nav class="flex flex-col justify-between gap-6 items-end">
+  <ul class="flex flex-col">
+    {
+      navItems.map((item, index) => (
+        <li class="py-2">
+          <a
+            class="tracking-wide"
+            href={item.href}
+            class:list={[
+              "hover:highlight-underline",
+              index === 0 && "highlight-underline",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <Toggle />
+  <Footer />
+</nav>

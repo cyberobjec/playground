@@ -1,96 +1,88 @@
 @import "tailwindcss";
-
-/* STIX Two Text variable font */
-@font-face {
-  font-family: "STIXTwoText";
-  src: url("/fonts/STIXTwoText[wght].woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "STIXTwoText";
-  src: url("/fonts/STIXTwoText-Italic[wght].woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Early Summer Serif family */
-@font-face {
-  font-family: "EarlySummerSerif";
-  src: url("/fonts/EarlySummerSerif-ExtraLight.ttf") format("truetype");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "EarlySummerSerif";
-  src: url("/fonts/EarlySummerSerif-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "EarlySummerSerif";
-  src: url("/fonts/EarlySummerSerif-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "EarlySummerSerif";
-  src: url("/fonts/EarlySummerSerif-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "EarlySummerSerif";
-  src: url("/fonts/EarlySummerSerif-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "EarlySummerSerif";
-  src: url("/fonts/EarlySummerSerif-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "EarlySummerSerif";
-  src: url("/fonts/EarlySummerSerif-Black.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
+@import "./fonts.css";
 
 @theme {
   --font-zh: "EarlySummerSerif", system-ui, sans-serif;
   --font-en: "STIXTwoText", ui-serif, Georgia, serif;
+
+  --color-bg: light-dark(#ffffff, #0a0a0a);
+  --color-text: light-dark(#1a1a1a, #e5e5e5);
+  --color-primary: light-dark(#3b82f6, #60a5fa);
+  --color-secondary: light-dark(#6b7280, #9ca3af);
+  --color-border: light-dark(#e5e7eb, #374151);
+  --color-card: light-dark(#f9fafb, #1f1f1f);
 }
 
 @layer base {
   html {
     font-family: var(--font-zh);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.75;
   }
 
   html:lang(en) {
     font-family: var(--font-en);
+    line-height: 1.6;
   }
 
   html:lang(zh),
   html:lang(zh-CN),
   html:lang(zh-TW) {
     font-family: var(--font-zh);
+    line-height: 1.75;
+  }
+
+  /* 标题行间距 */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.3;
+  }
+
+  /* 文章内容 */
+  article,
+  .prose {
+    line-height: 1.8 !important;
+  }
+}
+
+@layer utilities {
+  .font-sans-serif {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+  }
+  .container {
+    margin: 80px auto;
+    width: 100%;
+    min-height: calc(100vh - 160px);
+    max-width: 960px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 40px;
+
+    @media (width < 1024px) {
+      max-width: 720px;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin: 60px auto;
+    }
+
+    @media (width < 768px) {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      margin: 40px auto;
+    }
+  }
+
+  .highlight-underline {
+    text-decoration: underline;
+    text-decoration-color: oklch(0.93 0.2 103.25 / 0.5);
+    text-decoration-thickness: 10px;
+    text-underline-offset: -5px;
   }
 }

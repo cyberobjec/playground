@@ -1,0 +1,36 @@
+---
+interface Props {
+  size?: number;
+}
+
+const { size = 16 } = Astro.props;
+---
+
+<div class="flex items-center gap-6 py-1.5">
+  <button>
+    <svg
+      width={size}
+      height={size}
+      aria-hidden="true"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M19.18 21.1 12.4 1.89h-1.21L4.52 21.1l-2.53.2v.81h6.37v-.81l-2.83-.2 2.02-5.97h7.58l2.02 5.97-3.34.2v.81H22v-.81l-2.83-.2zM7.85 14.33l3.44-10.21 3.54 10.21z"
+      ></path>
+    </svg>
+  </button>
+  <button>
+    <svg
+      width={size}
+      height={size}
+      aria-hidden="true"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12.06.61C5.66.61.46 5.71.46 12.11s5.1 11.5 11.6 11.5 11.5-5.1 11.5-11.5S18.46.61 12.06.61m0 21c-6.07 0-10.94-4.2-10.94-9.5s4.87-9.4 10.94-9.4S23 6.91 23 12.21s-4.88 9.4-10.94 9.4"
+      ></path>
+    </svg>
+  </button>
+</div>

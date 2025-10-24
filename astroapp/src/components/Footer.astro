@@ -1,0 +1,29 @@
+---
+const footerItems = [
+  { href: "https://github.com/guanghe", label: "Rss" },
+  { href: "https://github.com/guanghe", label: "GitHub" },
+  { href: "mailto:guanghe@gmail.com", label: "Email" },
+  { href: "https://x.com/guanghe", label: "X" },
+];
+---
+
+<footer
+  class="text-sm text-gray-500"
+  style="font-family: var(--font-en); font-style: italic;"
+>
+  <ul class="flex gap-1 py-1.5">
+    {
+      footerItems.map((item, index) => (
+        <li class="py-2">
+          <a href={item.href}>
+            {index > 0 && "/"}
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="text-right">
+    © {new Date().getFullYear()} Guanghé. All rights reserved.
+  </p>
+</footer>

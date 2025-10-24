@@ -1,9 +1,11 @@
 ---
+import "../styles/global.css";
+import Siderbar from "../components/Siderbar.astro";
 interface Props {
   title: string;
   description?: string;
   image?: string;
-  lang?: "zh-CN" | "en"; // 合并到一个接口
+  lang?: "zh-CN" | "en";
 }
 
 const {
@@ -24,6 +26,11 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <slot />
+    <div class="container">
+      <main>
+        <slot />
+      </main>
+      <Siderbar />
+    </div>
   </body>
 </html>

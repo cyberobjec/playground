@@ -1,17 +1,15 @@
 ---
-import "../styles/global.css";
 import Layout from "../layout/Layout.astro";
 
 const page = {
   title: "光合",
-  description: "光合的个人博客客主页",
-  image: "/img/hello.jpg",
+  description: "光合的个人博客主页",
+  lang: "zh-CN" as const,
 };
+
+import PostList from "../components/PostList.astro";
 ---
 
-<Layout {...page} lang="en">
-  <div class="container mx-auto px-4">
-    <h1 class="text-4xl text-blue-500 bg-red-700">Astro</h1>
-    <p class="text-lg text-gray-500">光合的个人博客客主页 文章</p>
-  </div>
+<Layout {...page}>
+  <PostList />
 </Layout>

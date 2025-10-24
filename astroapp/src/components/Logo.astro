@@ -1,0 +1,36 @@
+---
+interface Props {
+  size?: number;
+  color?: string;
+  text?: string;
+}
+
+const { size = 32, color = "black", text = "光合" } = Astro.props;
+---
+
+<div class="flex flex-col gap-6 items-end">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 138 138"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    shape-rendering="geometricPrecision"
+  >
+    <circle
+      cx="69"
+      cy="69"
+      r="67.5"
+      stroke="black"
+      stroke-opacity="0.69"
+      stroke-width="3"></circle>
+    <path
+      d="M54.5 54.5C72.9186 36.0814 94.3416 27.6419 102.35 35.6498C110.358 43.6579 101.919 65.0816 83.5004 83.5003C65.0817 101.919 43.6579 110.358 35.6498 102.35C27.642 94.3416 36.0814 72.9185 54.5 54.5Z"
+      fill="black"></path>
+    <path
+      d="M54.5 54.5C72.9186 36.0814 94.3416 27.6419 102.35 35.6498C110.358 43.6579 101.919 65.0816 83.5004 83.5003C65.0817 101.919 43.6579 110.358 35.6498 102.35C27.642 94.3416 36.0814 72.9185 54.5 54.5Z"
+      stroke="black"></path>
+  </svg>
+
+  <h1 class="text-3xl font-bold [writing-mode:vertical-lr]">{text}</h1>
+</div>
