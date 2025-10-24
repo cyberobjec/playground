@@ -54,34 +54,58 @@
   .font-sans-serif {
     font-family: ui-sans-serif, system-ui, sans-serif;
   }
+
+  /* 隐藏滚动条但保持滚动功能 */
+  .scrollbar-hide {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 和 Edge */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
   .container {
     margin: 80px auto;
     width: 100%;
-    min-height: calc(100vh - 160px);
+    height: calc(100vh - 160px);
     max-width: 960px;
     padding-left: 1rem;
     padding-right: 1rem;
     display: grid;
     grid-template-columns: 1fr 240px;
     gap: 40px;
+    overflow: hidden;
 
     @media (width < 1024px) {
       max-width: 720px;
       grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr; /* 顶部固定，内容区占满剩余 */
       gap: 2rem;
-      margin: 60px auto;
+      margin: 40px auto;
+      height: calc(100vh - 80px);
     }
 
     @media (width < 768px) {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
-      margin: 40px auto;
+      margin: 20px auto;
+      height: calc(100vh - 40px);
     }
   }
 
   .highlight-underline {
     text-decoration: underline;
-    text-decoration-color: oklch(0.93 0.2 103.25 / 0.5);
+    text-decoration-color: oklch(0.93 0.2 103.25 / 0.9);
+    text-decoration-thickness: 10px;
+    text-underline-offset: -5px;
+  }
+
+  a:hover .highlight-underline,
+  a.hover\:highlight-underline:hover {
+    text-decoration: underline;
+    text-decoration-color: oklch(0.93 0.2 103.25 / 0.9);
+    font-weight: bold;
     text-decoration-thickness: 10px;
     text-underline-offset: -5px;
   }

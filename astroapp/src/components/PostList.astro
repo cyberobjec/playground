@@ -4,22 +4,22 @@ import type { CollectionEntry } from 'astro:content';
 
 const posts = (await getCollection('posts')).sort(
   (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => 
-    b.data.date.valueOf() - a.data.date.valueOf()
-);
+    b.data.date.valueOf() - a.data.date.valueOf() ).slice(0, 5);
+
 ---
 
 <div class="space-y-8">
   {posts.map((post: CollectionEntry<'posts'>) => (
-    <article class="font-sans-serif">
+    <article class="font-sans-serif ">
       <!-- 标题和日期在一行 -->
       <div class="flex items-baseline gap-4">
-        <h2 class="text-xl font-bold ">
-          <a 
-            href={`/posts/${post.slug}`}
-            class="hover:text-blue-500 transition-colors"
-          >
-            {post.data.title}
-          </a>
+        <h2 class="text-xl font-bold  ">
+   <a 
+  href={`/posts/${post.slug}`}
+  class="hover:highlight-underline"
+>
+  {post.data.title}
+</a>
         </h2>
         
         <time class="font-en italic text-sm text-gray-500 whitespace-nowrap">
@@ -31,21 +31,13 @@ const posts = (await getCollection('posts')).sort(
         </time>
       </div>
       
-      <!-- 文章摘要 -->
-      <p class="mt-3 text-gray-700 leading-relaxed">
-        {post.data.description}
+      <p class="mt-2  leading-relaxed line-clamp-3 ">
+        {post.body}
       </p>
-      
-      <!-- 标签 -->
-      {post.data.tags && post.data.tags.length > 0 && (
-        <div class="mt-3 flex gap-2 flex-wrap">
-          {post.data.tags.map((tag: string) => (
-            <span class="text-xs px-2 py-1 bg-gray-100 rounded text-gray-600">
-              #{tag}
-            </span>
-          ))}
-        </div>
-      )}
     </article>
+
+  
   ))}
+
+<a href="/posts" class="text-center text-sm text-gray-500">&gt;&gt;&gt;&gt;更多文章&lt;&lt;&lt;&lt;</a>
 </div>
