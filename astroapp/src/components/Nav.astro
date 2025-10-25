@@ -5,18 +5,16 @@ const navItems = [
   { href: "/about", label: "关于" },
   { href: "/category", label: "分类" },
 ];
-import Footer from "./Footer.astro";
+
 import Toggle from "./Toggle.astro";
+import Footer from "./Footer.astro";
 ---
 
-<nav
-  class="flex flex-col justify-between gap-6 items-end
-  max-lg:flex-row max-lg:items-center max-lg:gap-8"
->
-  <ul class="flex flex-col max-lg:flex-row max-lg:gap-4">
+<nav class="flex justify-between md:flex-col md:gap-y-4 md:items-end">
+  <ul class="flex gap-4 md:flex-col">
     {
       navItems.map((item, index) => (
-        <li class="py-2 max-lg:py-0">
+        <li class="py-2">
           <a
             href={item.href}
             class:list={[
@@ -31,5 +29,4 @@ import Toggle from "./Toggle.astro";
     }
   </ul>
   <Toggle />
-  <Footer />
 </nav>

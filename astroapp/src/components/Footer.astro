@@ -7,10 +7,7 @@ const footerItems = [
 ];
 ---
 
-<footer
-  class="text-sm text-gray-500"
-  style="font-family: var(--font-en); font-style: italic;"
->
+<footer class="text-sm text-gray-500 font-en-italic mt-12">
   <ul class="flex gap-1 py-1.5">
     {
       footerItems.map((item, index) => (
@@ -23,7 +20,7 @@ const footerItems = [
       ))
     }
   </ul>
-  <p class="text-right">
+  <p class="md:text-right">
     © {new Date().getFullYear()} Guanghé. All rights reserved.
   </p>
 </footer>
