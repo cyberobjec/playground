@@ -7,7 +7,7 @@ interface Props {
 const { text = "光合", size = 36 } = Astro.props;
 ---
 
-<div class="flex items-center gap-2 md:flex-col md:items-end">
+<a href="/" class="flex items-center gap-2 md:flex-col md:items-end">
   <svg
     width={size}
     height={size}
@@ -27,10 +27,10 @@ const { text = "光合", size = 36 } = Astro.props;
       fill="black"></ellipse>
   </svg>
 
-  <h1
+  <span
     class="text-4xl font-bold text-text-blue mt-2
        md:[writing-mode:vertical-lr]"
   >
     {text}
-  </h1>
-</div>
+  </span>
+</a>

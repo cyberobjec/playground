@@ -1,38 +1,42 @@
 ---
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
-const posts = (await getCollection('posts')).sort(
-  (a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => 
-    b.data.date.valueOf() - a.data.date.valueOf() ).slice(0, 5);
-
+const posts = (await getCollection("posts"))
+  .sort(
+    (a: CollectionEntry<"posts">, b: CollectionEntry<"posts">) =>
+      b.data.date.valueOf() - a.data.date.valueOf()
+  )
+  .slice(0, 5);
 ---
 
 <div class="space-y-8">
-  {posts.map((post: CollectionEntry<'posts'>) => (
-    <article class="font-sans-serif">
-      <div class="flex flex-col gap-y-1.5 md:flex-row md:gap-4 md:items-end">
-        <h2 class="text-base">
-          <a
-            href={`/posts/${post.slug}`}
-            class="hover:highlight-underline"
-          >
-            {post.data.title}
-          </a>
-        </h2>
+  {
+    posts.map((post) => (
+      <article class="font-sans-serif">
+        <div class="flex flex-col gap-y-1.5 md:flex-row md:gap-4 md:items-end">
+          <h2 class="text-base">
+            <a
+              href={`/posts/${post.slug}`}
+              class="text-lg font-bold hover:highlight-underline"
+            >
+              {post.data.title}
+            </a>
+          </h2>
 
-        <time class="font-en-italic text-sm text-gray-500 whitespace-nowrap">
-          {post.data.date.toLocaleDateString('en', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-          }).replace(/,/g, ' /')}
-        </time>
-      </div>
+          <time class="font-en-italic text-sm text-gray-500 whitespace-nowrap">
+            {post.data.date
+              .toLocaleDateString("en", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+              .replace(/,/g, " /")}
+          </time>
+        </div>
 
-      <p class="mt-2 leading-relaxed line-clamp-3">
-        {post.body}
-      </p>
-    </article>
-  ))}
-
+        <p class="mt-2 leading-relaxed line-clamp-3">{post.body}</p>
+      </article>
+    ))
+  }
+</div>

@@ -27,14 +27,11 @@ const page = {
   <div class="space-y-16">
     {
       postsWithContent.map((post) => (
-        <article class="prose max-w-none">
+        <article class="max-w-none">
           <header class="mb-6">
             <div class="flex flex-col gap-y-1.5 md:flex-row md:gap-4 md:items-end mb-4">
-              <h2 class="text-2xl  ">
-                <a
-                  href={`/posts/${post.slug}`}
-                  class="hover:highlight-underline "
-                >
+              <h2 class="text-2xl">
+                <a href={`/posts/${post.slug}`} class="md:text-lg font-bold ">
                   {post.data.title}
                 </a>
               </h2>
@@ -51,7 +48,7 @@ const page = {
             </div>
           </header>
 
-          <div class="article-content">
+          <div class="article-content line-clamp-1 md:line-clamp-3 ">
             <post.Content />
           </div>
         </article>
