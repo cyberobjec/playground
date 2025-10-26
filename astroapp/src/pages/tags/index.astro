@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layout/Layout.astro";
+
+const posts = await getCollection("posts");
+
+// 收集所有标签并统计文章数量
+const tagCounts = posts.reduce((acc, post) => {
+  if (post.data.tags) {
+    post.data.tags.forEach((tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+    });
+  }
+  return acc;
+}, {} as Record<string, number>);
+
+// 按文章数量排序
+const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]);
+
+const page = {
+  title: "标签 - 光合",
+  description: "所有标签",
+  lang: "zh-CN" as const,
+};
+---
+
+<Layout {...page}>
+  <div>
+    <h1 class="text-3xl font-bold mb-8">标签</h1>
+
+    <div class="space-y-4">
+      {
+        sortedTags.map(([tag, count]) => (
+          <div class="flex items-baseline gap-4">
+            <a
+              href={`/tags/${tag}`}
+              class="text-lg hover:highlight-underline"
+            >
+              #{tag}
+            </a>
+            <span class="text-sm text-gray-500 font-en-italic">
+              {count} {count === 1 ? "post" : "posts"}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

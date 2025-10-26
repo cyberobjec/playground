@@ -1,0 +1,85 @@
+---
+import Layout from "../layout/Layout.astro";
+
+const page = {
+  title: "资源 - 光合",
+  description: "精选资源推荐",
+  lang: "zh-CN" as const,
+};
+
+// 资源列表数据
+const resources = [
+  {
+    category: "设计工具",
+    items: [
+      { name: "Figma", url: "https://figma.com", description: "协作设计工具" },
+      {
+        name: "Tailwind CSS",
+        url: "https://tailwindcss.com",
+        description: "实用优先的 CSS 框架",
+      },
+    ],
+  },
+  {
+    category: "开发工具",
+    items: [
+      {
+        name: "Astro",
+        url: "https://astro.build",
+        description: "现代静态网站生成器",
+      },
+      { name: "Bun", url: "https://bun.sh", description: "快速的 JavaScript 运行时" },
+      { name: "GitHub", url: "https://github.com", description: "代码托管平台" },
+    ],
+  },
+  {
+    category: "学习资源",
+    items: [
+      {
+        name: "MDN Web Docs",
+        url: "https://developer.mozilla.org",
+        description: "Web 技术文档",
+      },
+      {
+        name: "Hayek 著作",
+        url: "https://github.com/HarborLibrary/Political-Science",
+        description: "政治哲学相关资料",
+      },
+    ],
+  },
+];
+---
+
+<Layout {...page}>
+  <div>
+    <h1 class="text-3xl font-bold mb-8">资源</h1>
+
+    <div class="space-y-12">
+      {
+        resources.map((section) => (
+          <section>
+            <h2 class="text-2xl font-bold mb-6">{section.category}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {section.items.map((item) => (
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="p-6 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors group"
+                >
+                  <h3 class="text-lg font-bold mb-2 group-hover:highlight-underline">
+                    {item.name}
+                  </h3>
+                  <p class="text-sm text-gray-600">{item.description}</p>
+                  <p class="text-xs text-gray-400 mt-2 font-en-italic">
+                    {new URL(item.url).hostname}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

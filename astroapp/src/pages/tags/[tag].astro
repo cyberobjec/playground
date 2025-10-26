@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layout/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  // 收集所有唯一标签
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))];
+
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      posts: posts
+        .filter((post) => post.data.tags?.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title={`标签: ${tag} - 光合`} description={`标签 ${tag} 下的所有文章`}>
+  <div class="space-y-8">
+    <div>
+      <h1 class="text-3xl font-bold mb-2">#{tag}</h1>
+      <p class="text-sm text-gray-500 font-en-italic">
+        {posts.length} {posts.length === 1 ? "post" : "posts"}
+      </p>
+    </div>
+
+    <div class="space-y-8">
+      {
+        posts.map((post) => (
+          <article class="font-sans-serif">
+            <div class="flex flex-col gap-y-1.5 md:flex-row md:gap-4">
+              <h2 class="text-base">
+                <a
+                  href={`/posts/${post.slug}`}
+                  class="hover:highlight-underline"
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+
+              <time class="font-en-italic text-sm text-gray-500 whitespace-nowrap">
+                {post.data.date
+                  .toLocaleDateString("en", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                  .replace(/,/g, " /")}
+              </time>
+            </div>
+
+            <p class="mt-2 leading-relaxed line-clamp-3 hidden md:block">
+              {post.data.description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

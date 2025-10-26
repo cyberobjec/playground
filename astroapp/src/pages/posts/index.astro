@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layout/Layout.astro";
+
+const allPosts = (await getCollection("posts")).sort(
+  (a: CollectionEntry<"posts">, b: CollectionEntry<"posts">) =>
+    b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// 渲染所有文章的内容
+const postsWithContent = await Promise.all(
+  allPosts.map(async (post) => ({
+    ...post,
+    Content: (await post.render()).Content,
+  }))
+);
+
+const page = {
+  title: "文章 - 光合",
+  description: "所有文章列表",
+  lang: "zh-CN" as const,
+};
+---
+
+<Layout {...page}>
+  <div class="space-y-16">
+    {
+      postsWithContent.map((post) => (
+        <article class="prose max-w-none">
+          <header class="mb-6">
+            <div class="flex flex-col gap-y-1.5 md:flex-row md:gap-4 md:items-end mb-4">
+              <h2 class="text-2xl  ">
+                <a
+                  href={`/posts/${post.slug}`}
+                  class="hover:highlight-underline "
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+
+              <time class="font-en-italic text-sm text-gray-500 whitespace-nowrap">
+                {post.data.date
+                  .toLocaleDateString("en", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })
+                  .replace(/,/g, " /")}
+              </time>
+            </div>
+          </header>
+
+          <div class="article-content">
+            <post.Content />
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</Layout>

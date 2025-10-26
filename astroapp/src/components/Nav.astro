@@ -1,26 +1,27 @@
 ---
 const navItems = [
   { href: "/posts", label: "文章" },
-  { href: "/tags", label: "标签" },
+  { href: "/resources", label: "资源" },
+  { href: "/projects", label: "项目" },
   { href: "/about", label: "关于" },
-  { href: "/category", label: "分类" },
+  { href: "/subscribe", label: "订阅" },
 ];
 
 import Toggle from "./Toggle.astro";
-import Footer from "./Footer.astro";
 ---
 
-<nav class="flex justify-between md:flex-col md:gap-y-4 md:items-end">
-  <ul class="flex gap-4 md:flex-col">
+<nav
+  class="flex justify-between md:flex-col md:gap-y-4 md:items-end"
+  id="main-nav"
+>
+  <ul class="flex gap-2 md:flex-col md:pb-8 relative" id="nav-list">
     {
-      navItems.map((item, index) => (
+      navItems.map((item) => (
         <li class="py-2">
           <a
             href={item.href}
-            class:list={[
-              "hover:highlight-underline",
-              index === 0 && "highlight-underline",
-            ]}
+            class="nav-link relative hover:highlight-underline"
+            data-path={item.href}
           >
             {item.label}
           </a>
@@ -30,3 +31,34 @@ import Footer from "./Footer.astro";
   </ul>
   <Toggle />
 </nav>
+
+<script>
+  function updateActiveNav() {
+    const links = document.querySelectorAll('.nav-link') as NodeListOf<HTMLAnchorElement>;
+    const currentPath = window.location.pathname;
+
+    links.forEach(link => {
+      const linkPath = link.getAttribute('data-path');
+
+      // 移除所有激活状态
+      link.classList.remove('highlight-underline');
+
+      // 添加激活状态到匹配的链接
+      if (currentPath === linkPath || currentPath.startsWith(linkPath + '/')) {
+        link.classList.add('highlight-underline');
+      }
+    });
+
+    // 如果没有匹配，默认激活第一个
+    const hasActive = Array.from(links).some(link => link.classList.contains('highlight-underline'));
+    if (!hasActive && links.length > 0) {
+      links[0].classList.add('highlight-underline');
+    }
+  }
+
+  // 页面加载时初始化
+  updateActiveNav();
+
+  // View Transitions 页面切换后重新初始化
+  document.addEventListener('astro:page-load', updateActiveNav);
+</script>

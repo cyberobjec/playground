@@ -23,6 +23,7 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.75;
+    overflow-y: scroll; /* 强制显示滚动条，防止抖动 */
   }
 
   html:lang(en) {
@@ -77,13 +78,27 @@
     padding: 40px 40px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "sidebar"
+      "main"
+      "footer";
     gap: 2rem;
   }
 
-  /* 移动端让 Sidebar 显示在顶部 */
-  .container > aside {
-    order: -1;
+  .sidebar-area {
+    grid-area: sidebar;
+  }
+
+  .main-area {
+    grid-area: main;
+  }
+
+  .footer-area {
+    grid-area: footer;
+    font-size: 12px;
+    padding-right: 48px;
+    margin-top: 3rem; /* 移动端 48px */
   }
 
   /* 桌面端 (≥768px) */
@@ -95,13 +110,16 @@
       padding-left: 1rem;
       padding-right: 1rem;
       grid-template-columns: 1fr 240px;
-      grid-template-rows: 1fr;
-      gap: 40px;
+      grid-template-rows: 1fr auto;
+      grid-template-areas:
+        "main sidebar"
+        "main footer";
+      column-gap: 40px;
+      row-gap: 32px; /* Nav 到 Footer 的距离 */
     }
 
-    /* 桌面端取消 order */
-    .container > aside {
-      order: 0;
+    .footer-area {
+      margin-top: 0; /* 桌面端使用 row-gap 控制间距 */
     }
   }
 
@@ -115,5 +133,59 @@
   a:hover .highlight-underline,
   a.hover\:highlight-underline:hover {
     font-weight: bold;
+  }
+
+  /* 导航链接样式 */
+  .nav-link {
+    display: inline-block;
+    transition: font-weight 0.2s ease;
+  }
+
+  .nav-link:hover {
+    font-weight: bold;
+  }
+
+  /* 导航下划线指示器 */
+  .nav-indicator {
+    pointer-events: none;
+    transform-origin: left center;
+  }
+}
+
+/* View Transitions 动画 */
+@layer base {
+  /* 自定义淡入淡出动画 */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 旧视图淡出 */
+  ::view-transition-old(root) {
+    animation-name: fade-out;
+  }
+
+  /* 新视图淡入 */
+  ::view-transition-new(root) {
+    animation-name: fade-in;
+  }
+
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
