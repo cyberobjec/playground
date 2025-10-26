@@ -14,13 +14,13 @@ import Toggle from "./Toggle.astro";
   class="flex justify-between md:flex-col md:gap-y-4 md:items-end"
   id="main-nav"
 >
-  <ul class="flex gap-2 md:flex-col md:pb-8 relative" id="nav-list">
+  <ul class="flex gap-4 md:flex-col md:pb-8 relative" id="nav-list">
     {
       navItems.map((item) => (
         <li class="py-2">
           <a
             href={item.href}
-            class="nav-link relative hover:highlight-underline"
+            class="nav-link relative hover:highlight-underline md:tracking-widest"
             data-path={item.href}
           >
             {item.label}

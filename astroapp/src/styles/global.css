@@ -5,8 +5,8 @@
   --font-zh: "EarlySummerSerif", system-ui, sans-serif;
   --font-en: "STIXTwoText", ui-serif, Georgia, serif;
 
-  --color-bg: light-dark(#ffffff, #0a0a0a);
-  --color-text: light-dark(#1a1a1a, #e5e5e5);
+  --color-bg: light-dark(#faf9f7, #0a0a0a);
+  --color-text: light-dark(#2e405b, #e5e5e5);
   --color-primary: light-dark(#3b82f6, #60a5fa);
   --color-secondary: light-dark(#6b7280, #9ca3af);
   --color-border: light-dark(#e5e7eb, #374151);

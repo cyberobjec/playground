@@ -9,82 +9,100 @@ const page = {
 ---
 
 <Layout {...page}>
-  <div>
-    <h1 class="text-2xl font-bold mb-4">订阅</h1>
-    <p class="text-gray-600 text-sm mb-6">
-      订阅博客，及时获取最新文章、思考和分享。
-    </p>
+  <div class="h-full flex flex-col justify-between">
+    <div>
+      <h1 class="text-xl font-bold mb-6 hidden md:block">订阅</h1>
+      <p class="text-gray-600 text-sm mb-6">
+        订阅博客，及时获取最新文章、思考和分享。
+      </p>
 
-    <div class="space-y-4">
-      <div class="p-4 border border-gray-200 rounded-lg">
-        <h2 class="text-lg font-bold mb-2">RSS 订阅</h2>
-        <p class="text-gray-600 text-sm mb-3">
-          使用 RSS 阅读器订阅博客更新
-        </p>
-        <a
-          href="/rss.xml"
-          class="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
-        >
-          <svg
-            class="w-4 h-4"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"
-            ></path>
-          </svg>
-          <span>订阅 RSS</span>
-        </a>
-      </div>
-
-      <div class="p-4 border border-gray-200 rounded-lg">
-        <h2 class="text-lg font-bold mb-2">邮件订阅</h2>
-        <p class="text-gray-600 text-sm mb-3">
-          通过电子邮件接收最新文章（功能开发中）
-        </p>
-        <form class="flex gap-2 opacity-50 pointer-events-none">
-          <input
-            type="email"
-            placeholder="your@email.com"
-            class="flex-1 px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
-            disabled
-          />
-          <button
-            type="submit"
-            class="px-3 py-1.5 text-sm bg-gray-300 text-gray-600 rounded-lg cursor-not-allowed whitespace-nowrap"
-            disabled
-          >
-            订阅（即将推出）
-          </button>
-        </form>
-      </div>
-
-      <div class="p-4 border border-gray-200 rounded-lg">
-        <h2 class="text-lg font-bold mb-2">社交媒体</h2>
-        <p class="text-gray-600 text-sm mb-3">
-          在社交平台关注我，获取更多即时更新和思考
-        </p>
-        <div class="flex gap-3">
+      <div class="space-y-4">
+        <div class="p-4 border border-gray-200 rounded-lg">
+          <h2 class="text-lg font-bold mb-2">RSS 订阅</h2>
+          <p class="text-gray-600 text-sm mb-3">使用 RSS 阅读器订阅博客更新</p>
           <a
-            href="https://github.com/guanghe"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:border-gray-500 transition-colors"
+            href="/rss.xml"
+            class="inline-flex items-center gap-2 px-3 py-1.5 text-sm bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
           >
-            GitHub
+            <svg
+              class="w-4 h-4"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"
+              ></path>
+            </svg>
+            <span>订阅 RSS</span>
           </a>
-          <a
-            href="https://x.com/guanghe"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:border-gray-500 transition-colors"
-          >
-            X (Twitter)
-          </a>
+        </div>
+
+        <div class="p-4 border border-gray-200 rounded-lg">
+          <h2 class="text-lg font-bold mb-2">邮件订阅</h2>
+          <p class="text-gray-600 text-sm mb-3">
+            通过电子邮件接收最新文章（功能开发中）
+          </p>
+          <form class="flex gap-2 opacity-50 pointer-events-none">
+            <input
+              type="email"
+              placeholder="your@email.com"
+              class="flex-1 px-3 py-1.5 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-gray-500"
+              disabled
+            />
+            <button
+              type="submit"
+              class="px-3 py-1.5 text-sm bg-gray-300 text-gray-600 rounded-lg cursor-not-allowed whitespace-nowrap"
+              disabled
+            >
+              订阅（即将推出）
+            </button>
+          </form>
+        </div>
+
+        <div class="p-4 border border-gray-200 rounded-lg">
+          <h2 class="text-lg font-bold mb-2">社交媒体</h2>
+          <p class="text-gray-600 text-sm mb-3">
+            在社交平台关注我，获取更多即时更新和思考
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="https://github.com/cyberobjec"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:border-gray-500 transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://x.com/guangherizhi"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:border-gray-500 transition-colors"
+            >
+              X (Twitter)
+            </a>
+            <a
+              href="https://www.xiaohongshu.com/user/profile/guanghe"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:border-gray-500 transition-colors"
+            >
+              小红书
+            </a>
+            <a
+              href="https://t.me/guanghe"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:border-gray-500 transition-colors"
+            >
+              Telegram
+            </a>
+          </div>
         </div>
       </div>
     </div>
+
+    <div></div>
   </div>
 </Layout>

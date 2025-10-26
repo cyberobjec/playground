@@ -7,87 +7,79 @@ const page = {
   lang: "zh-CN" as const,
 };
 
-// 资源列表数据
+// 资源列表数据 - 按技术栈分类
 const resources = [
   {
-    category: "设计工具",
+    category: "Design",
     items: [
-      { name: "Figma", url: "https://figma.com", description: "协作设计工具" },
-      {
-        name: "Tailwind CSS",
-        url: "https://tailwindcss.com",
-        description: "实用优先的 CSS 框架",
-      },
+      { name: "Figma", url: "https://figma.com", description: "现代协作设计工具" },
+      { name: "Axure RP", url: "https://www.axure.com", description: "产品原型设计工具" },
+      { name: "Adobe XD", url: "https://www.adobe.com/products/xd.html", description: "UI/UX 设计平台" },
     ],
   },
   {
-    category: "开发工具",
+    category: "Frontend",
     items: [
-      {
-        name: "Astro",
-        url: "https://astro.build",
-        description: "现代静态网站生成器",
-      },
-      {
-        name: "Bun",
-        url: "https://bun.sh",
-        description: "快速的 JavaScript 运行时",
-      },
-      {
-        name: "GitHub",
-        url: "https://github.com",
-        description: "代码托管平台",
-      },
+      { name: "React", url: "https://react.dev", description: "用于构建 UI 的 JavaScript 库" },
+      { name: "Tailwind CSS", url: "https://tailwindcss.com", description: "实用优先的 CSS 框架" },
+      { name: "Astro", url: "https://astro.build", description: "现代静态网站生成器" },
+      { name: "Flutter", url: "https://flutter.dev", description: "跨平台 UI 框架" },
+      { name: "TypeScript", url: "https://www.typescriptlang.org", description: "JavaScript 的超集" },
     ],
   },
   {
-    category: "学习资源",
+    category: "Backend",
     items: [
-      {
-        name: "MDN Web Docs",
-        url: "https://developer.mozilla.org",
-        description: "Web 技术文档",
-      },
-      {
-        name: "Hayek 著作",
-        url: "https://github.com/HarborLibrary/Political-Science",
-        description: "政治哲学相关资料",
-      },
+      { name: "Node.js", url: "https://nodejs.org", description: "JavaScript 运行时环境" },
+      { name: "FastAPI", url: "https://fastapi.tiangolo.com", description: "现代 Python Web 框架" },
+      { name: "Rust", url: "https://www.rust-lang.org", description: "高性能系统编程语言" },
+      { name: "Python", url: "https://www.python.org", description: "通用编程语言" },
+    ],
+  },
+  {
+    category: "Database",
+    items: [
+      { name: "PostgreSQL", url: "https://www.postgresql.org", description: "强大的开源关系数据库" },
+      { name: "MySQL", url: "https://www.mysql.com", description: "流行的关系数据库" },
     ],
   },
 ];
 ---
 
 <Layout {...page}>
-  <div>
-    <h1 class="text-2xl font-bold mb-6">资源</h1>
+  <div class="h-full flex flex-col justify-between">
+    <div>
+      <h1 class="text-xl font-bold mb-6 hidden md:block">资源</h1>
 
-    <div class="space-y-6">
-      {
-        resources.map((section) => (
-          <section>
-            <h2 class="text-lg font-bold mb-3">{section.category}</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {section.items.map((item) => (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="p-4 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors group"
-                >
-                  <h3 class="text-base font-bold mb-1 group-hover:highlight-underline">
-                    {item.name}
-                  </h3>
-                  <p class="text-sm text-gray-600">{item.description}</p>
-                  <p class="text-xs text-gray-400 mt-1.5 font-en-italic">
-                    {new URL(item.url).hostname}
-                  </p>
-                </a>
-              ))}
-            </div>
-          </section>
-        ))
-      }
+      <div class="space-y-6">
+        {
+          resources.map((section) => (
+            <section>
+              <h2 class="text-lg font-bold mb-3">{section.category}</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {section.items.map((item) => (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="p-4 border border-gray-200 rounded-lg hover:border-gray-400 transition-colors group"
+                  >
+                    <h3 class="text-base font-bold mb-1 group-hover:highlight-underline">
+                      {item.name}
+                    </h3>
+                    <p class="text-sm text-gray-600">{item.description}</p>
+                    <p class="text-xs text-gray-400 mt-1.5 font-en-italic">
+                      {new URL(item.url).hostname}
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
     </div>
+
+    <div></div>
   </div>
 </Layout>

@@ -10,11 +10,11 @@ const page = {
 
 <Layout {...page}>
   <article class="prose max-w-none">
-    <h1 class="text-3xl font-bold mb-8">关于</h1>
+    <h1 class="text-xl font-bold mb-6 hidden md:block">关于</h1>
 
     <div class="space-y-6 leading-relaxed">
       <p>
-        非要有介绍的话，<a
+        <a
           href="https://github.com/HarborLibrary/Political-Science/blob/master/%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E5%93%88%E8%80%B6%E5%85%8B%EF%BC%9A%E9%80%9A%E5%BE%80%E5%A5%B4%E5%BD%B9%E4%B9%8B%E8%B7%AF%20(%E5%8F%B0%E6%B9%BE%E7%89%88%20%E6%AE%B7%E6%B5%B7%E5%85%89%E8%AF%91).pdf"
           class="text-gray-500 highlight-underline"
           target="_blank"
@@ -25,48 +25,85 @@ const page = {
       </p>
 
       <section>
-        <h2 class="text-2xl font-bold mb-4">关于这个博客</h2>
-        <p>这是一个使用 Astro 构建的个人博客，记录思考、学习和生活。</p>
-      </section>
-
-      <section>
-        <h2 class="text-2xl font-bold mb-4">技术栈</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Astro - 静态站点生成器</li>
-          <li>Tailwind CSS - 样式框架</li>
-          <li>Bun - JavaScript运行时</li>
+        <ul class="space-y-2 text-sm">
+          <li><span class="font-en-italic text-gray-500">2015 - 2019</span> UI设计师</li>
+          <li><span class="font-en-italic text-gray-500">2019 - 2020</span> 交互设计</li>
+          <li><span class="font-en-italic text-gray-500">2020 - 2023</span> 产品经理</li>
+          <li><span class="font-en-italic text-gray-500">2023 - 至今</span> 全栈开发</li>
         </ul>
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold mb-4">联系方式</h2>
-        <ul class="space-y-2">
+        <h2 class="text-lg font-bold mb-3">技术栈</h2>
+        <div class="space-y-3">
+          <div>
+            <h3 class="text-xs text-gray-500 mb-2 font-en-italic">Design</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Figma</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full line-through opacity-50">Sketch</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full line-through opacity-50">Photoshop</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Axure</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xs text-gray-500 mb-2 font-en-italic">Frontend</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">JavaScript</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">TypeScript</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">React</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Tailwind CSS</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Astro</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Flutter</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xs text-gray-500 mb-2 font-en-italic">Backend</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Node.js</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Python</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">FastAPI</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">Rust</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xs text-gray-500 mb-2 font-en-italic">Database</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">MySQL</span>
+              <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-bold mb-3">联系方式</h2>
+        <ul class="space-y-2 text-sm">
           <li>
-            <span class="font-en-italic">Email:</span>
-            <a href="mailto:guanghe@gmail.com" class="highlight-underline ml-2">
-              guanghe@gmail.com
+            <span class="font-en-italic text-gray-500">Email:</span>
+            <a href="mailto:cyberobj@gmail.com" class="highlight-underline ml-2">
+              cyberobj@gmail.com
             </a>
           </li>
           <li>
-            <span class="font-en-italic">GitHub:</span>
+            <span class="font-en-italic text-gray-500">GitHub:</span>
             <a
-              href="https://github.com/guanghe"
+              href="https://github.com/cyberobjec"
               class="highlight-underline ml-2"
               target="_blank"
               rel="noopener noreferrer"
             >
-              @guanghe
+              @cyberobjec
             </a>
           </li>
           <li>
-            <span class="font-en-italic">X:</span>
+            <span class="font-en-italic text-gray-500">X:</span>
             <a
-              href="https://x.com/guanghe"
+              href="https://x.com/guangherizhi"
               class="highlight-underline ml-2"
               target="_blank"
               rel="noopener noreferrer"
             >
-              @guanghe
+              @guangherizhi
             </a>
           </li>
         </ul>
